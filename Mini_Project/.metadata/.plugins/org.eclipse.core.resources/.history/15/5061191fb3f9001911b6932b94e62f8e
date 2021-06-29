@@ -1,0 +1,51 @@
+public class Mission 
+{
+	public static void main(String agrs[])//activateShield()
+	{
+		int[] cipher = cipherMaker("K" , new int[] {47});
+		RSA key = new RSA();
+		int[] levelThreeRemoved = new int[cipher.length];
+		int i = 0 ;
+		for(int x:cipher)
+		{
+			DRSA obj = new DRSA();
+			levelThreeRemoved[i] = obj.main(key,x);
+			i++;
+		}
+		
+		System.out.println("Level Three Removed");
+		for(int x: levelThreeRemoved)
+			System.out.print(x + " ");
+		
+		i = 0;
+		int[] levelTwoRemoval = new int[levelThreeRemoved.length];
+		for(int x : levelThreeRemoved)
+		{
+			DSDES obj = new DSDES();
+			levelTwoRemoval[i] = obj.main(x);
+			i++;
+		}
+		
+		System.out.println("\nLevel Two Removed");
+		for(int x:levelTwoRemoval)
+			System.out.print(x + " ");
+		
+		
+		String s = "";
+		
+	}
+	
+	public static int[] cipherMaker(String s , int[] b)
+	{
+		int[] cipher = new int[b.length];
+		for(int i = 0 ; i < b.length ; i++)
+		{
+			cipher[i] = b[i]*26 + (s.charAt(i)-65);
+		}
+		
+		return cipher;
+	}
+}
+
+//10 2 19 14 12 16 20 4 19 2 18 0 14 18 9 5 3 13 9 11 18 20 13 12 0 2
+//178 149 124 140 243 16 83 130 40 170 18 231 77 207 114 47 3 76 51 74 102 41 244 33 63 233

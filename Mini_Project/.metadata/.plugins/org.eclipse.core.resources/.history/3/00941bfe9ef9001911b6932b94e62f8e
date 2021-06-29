@@ -1,0 +1,30 @@
+public class Mission 
+{
+	public static void main(String agrs[])//activateShield()
+	{
+		int[] cipher = cipherMaker("K" , new int[] {0});
+		RSA key = new RSA();
+		int[] levelThreeRemoved = new int[cipher.length];
+		int i = 0 ;
+		for(int x:cipher)
+		{
+			DRSA obj = new DRSA();
+			levelThreeRemoved[i] = obj.main(key,x);
+			i++;
+		}
+		
+		for(int x: levelThreeRemoved)
+			System.out.println(x);
+	}
+	
+	public static int[] cipherMaker(String s , int[] b)
+	{
+		int[] cipher = new int[b.length];
+		for(int i = 0 ; i < b.length ; i++)
+		{
+			cipher[i] = b[i]*26 + (s.charAt(i)-65);
+		}
+		
+		return cipher;
+	}
+}

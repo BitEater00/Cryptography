@@ -1,0 +1,43 @@
+public class Minigun 
+{
+	public void activatemain() 
+    {
+        MONOADDITIVE level1 = new MONOADDITIVE();
+        String level1Cipher = level1.cipher;
+        int[] levelTwo = new int[level1Cipher.length()];
+        System.out.print("Level Two Encryption: ");
+        for(int i = 0 ; i < level1Cipher.length();i++)
+        {
+        	SDES level2 = new SDES();
+        	levelTwo[i] = level2.main(level1Cipher.charAt(i));
+        }
+        for(int x:levelTwo)
+        	System.out.print(x+" ");
+        System.out.println();
+        display(levelTwo);
+        RSA key = new RSA();
+        RSA_Encryption level3 = new RSA_Encryption(key);
+        int[] levelThree = new int[levelTwo.length];
+        
+        for(int i = 0 ; i < level1Cipher.length();i++)
+        {
+            levelThree[i] = level3.main(levelTwo[i]);
+        }
+        int[] remove = new int[levelThree.length];
+        for(int x:levelThree)
+        	System.out.print(x+" ");
+        System.out.println();
+        display(levelThree);
+    }
+	
+	public void display(int[] a)
+	{
+		for(int x :a)
+		{
+			System.out.print((char)((x%26)+65));
+		}
+		System.out.println();
+	}
+}
+
+
